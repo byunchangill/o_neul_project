@@ -1,0 +1,11 @@
+.notice_write {
+    margin: 80px;
+}
+
+input[type=checkbox]{
+    display: block !important;
+}
+.n_check {
+    display: inline-flex;
+    align-items: center;
+}

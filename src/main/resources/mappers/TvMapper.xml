@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gsvl.oneul.tv.TvMapper">
+    <!--tv 프로그램 리시트-->
+    <select id="selTvList" resultType="TvEntity">
+        SELECT * FROM o_tv
+        WHERE t_pro = #{t_pro}
+        LIMIT ${rowcnt}, ${recordcount}
+    </select>
+
+    <!--페이징 처리-->
+    <select id="selMaxPage" resultType="Integer">
+        SELECT CEIL(COUNT(itv) / ${recordcount})
+        FROM o_tv
+        WHERE t_pro = #{t_pro}
+    </select>
+
+    <!--tv 이미지 처리-->
+    <select id="selImg" resultType="String">
+        select t_img from o_tv
+        where itv = ${itv}
+    </select>
+
+    <!--이미지 업데이트-->
+    <update id="uptImg">
+        update o_tv
+        set t_img = #{t_img}
+        where itv = #{itv}
+    </update>
+</mapper>

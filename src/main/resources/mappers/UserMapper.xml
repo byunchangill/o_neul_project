@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gsvl.oneul.user.UserMapper">
+    <insert id="join" >
+        insert into o_user
+        (u_pfnum,u_id,u_pw,u_nm,u_email,u_profileimg)
+        values
+        (#{u_pfnum},#{u_id},#{u_pw},#{u_nm},#{u_email},#{u_profileimg})
+    </insert>
+
+    <select id="selUser" resultType="UserEntity">
+        SELECT * FROM o_user
+        WHERE u_id = #{u_id}
+          AND u_pfnum = #{u_pfnum}
+    </select>
+
+
+    <select id="idChk" resultType="UserEntity">
+        SELECT *
+        FROM o_user
+        WHERE u_id = #{u_id}
+          and u_pfnum = 1;
+    </select>
+
+    <select id="emailChk" resultType="UserEntity">
+        SELECT *
+        FROM o_user
+        WHERE u_email = #{u_email}
+          and u_pfnum = 1;
+    </select>
+
+    <select id="idFind" resultType="UserEntity">
+        SELECT *
+        FROM o_user
+        WHERE u_email = #{u_email}
+          and u_pfnum = 1
+          and u_nm = #{u_nm};
+    </select>
+
+    <select id="pwFind" resultType="UserEntity">
+        SELECT *
+        FROM o_user
+        WHERE u_email = #{u_email}
+          and u_pfnum = 1
+          and u_nm = #{u_nm}
+          and u_id = #{u_id};
+    </select>
+
+
+    <update id="pwFindUser">
+        UPDATE o_user
+        SET u_pw = #{u_pw}
+        WHERE u_email = #{u_email}
+          and u_pfnum = 1
+          and u_nm = #{u_nm}
+          and u_id = #{u_id};
+    </update>
+
+
+    <!--  찜목록  -->
+    <select id="zzimFoodList" resultType="zzimEntity">
+        SELECT B.f_nm, B.f_img, B.ifood
+        FROM o_zzim_food A INNER JOIN o_food B ON A.ifood = B.ifood WHERE A.iuser = ${iuser};
+    </select>
+
+    <resultMap id="zzimJmt" type="zzimEntity">
+        <result property="ijmt" column="ijmt"></result>
+        <collection property="j_src" column="ijmt" select="jmtImg"></collection>
+    </resultMap>
+
+    <select id="zzimJmtList" resultMap="zzimJmt">
+        SELECT B.j_placenm,  B.ijmt
+        FROM o_zzim_jmt A INNER JOIN o_jmt B ON A.ijmt = B.ijmt WHERE A.iuser = ${iuser};
+    </select>
+    <select id="jmtImg" resultType="String">
+        select j_src from o_jmt_img where ijmt = #{ijmt}
+    </select>
+
+    <select id="nicknameChk" resultType="UserEntity">
+        SELECT *
+        FROM o_user
+        WHERE u_nickname = #{u_nickname};
+    </select>
+
+    <update id="updNickname">
+        UPDATE o_user
+        SET u_nickname = #{u_nickname}
+        WHERE iuser = ${iuser}
+    </update>
+
+    <select id="changeUser" resultType="UserEntity">
+        SELECT * FROM o_user
+        WHERE
+        <if test=" u_email != null and u_email != '' and u_pfnum != null and u_pfnum != ''">
+            u_email = #{u_email} and u_pfnum = ${u_pfnum}
+        </if>
+        <if test=" iuser > 0 ">iuser = #{iuser}</if>
+    </select>
+
+    <update id="updUser">
+        UPDATE o_user
+        SET
+        <if test=" u_pw != null and u_pw != '' ">
+            u_pw = #{u_pw}
+        </if>
+        <if test=" u_profileimg != null and u_profileimg != '' ">
+            u_profileimg = #{u_profileimg}
+        </if>
+        WHERE iuser = ${iuser}
+    </update>
+
+
+    <select id="isZzimFood" resultType="Integer">
+        select count(*) from o_zzim_food
+        where iuser = ${iuser}
+        and ifood = ${ifood}
+    </select>
+
+    <insert id="insZzimFood">
+        insert into o_zzim_food
+        (iuser,ifood)
+        values
+        (${iuser},${ifood})
+    </insert>
+
+    <delete id="delZzimFood">
+        delete from o_zzim_food
+        where iuser = ${iuser} and ifood = ${ifood}
+    </delete>
+
+    <select id="isZzimJmt" resultType="Integer">
+        select count(*) from o_zzim_jmt
+        where iuser = ${iuser}
+          and ijmt = ${ijmt}
+    </select>
+
+    <insert id="insZzimJmt">
+        insert into o_zzim_jmt
+            (iuser,ijmt)
+        values
+            (${iuser},${ijmt})
+    </insert>
+
+    <delete id="delZzimJmt">
+        delete from o_zzim_jmt
+        where iuser = ${iuser} and ijmt = ${ijmt}
+    </delete>
+
+</mapper>

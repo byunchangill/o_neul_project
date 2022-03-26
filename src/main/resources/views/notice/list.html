@@ -1,0 +1,51 @@
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="temp/thymeleaf_layout">
+<head>
+    <link rel="stylesheet"  th:href="@{/css/notice/notice.css}">
+    <script defer th:src="@{/js/notice/notice.js}"></script>
+    <meta charset="UTF-8">
+    <title>notice</title>
+</head>
+<th:block layout:fragment="content">
+    <section class="ss-bn-container">
+        <div class="flex-c-c">
+            <img src="/img/notice_bn.jpg"> <!--공고사항 배너 이미지-->
+        </div>
+    </section>
+
+    <section class="notice-content-container">
+        <div> <!--공지사항 아이콘.-->
+            <div class="line" id="notice_icon"><i class="fa-solid fa-circle-info"></i></div>
+            <div id="notice_list" class="notice_list">
+                <table class="table table-hover caption-top">
+                    <thead>
+                        <tr>
+                            <th>번호</th>
+                            <th>제목</th>
+                            <th>조회</th>
+                            <th>작성일</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div sec:authorize="hasRole('ROLE_ADMIN')">
+            <a th:href="@{/notice/write}">
+                <button class="btn btn-primary" type="submit">글쓰기</button>
+            </a>
+        </div>
+    </section>
+
+    <!--공지사항 페이지.-->
+    <div id="page_container" class="page_container">
+        <nav>
+            <ul id="pagination" class="pagination justify-content-center"></ul>
+        </nav>
+    </div>
+</th:block>
+</html>

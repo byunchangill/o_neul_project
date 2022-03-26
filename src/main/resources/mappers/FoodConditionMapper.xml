@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gsvl.oneul.food.FoodMapper">
+    <select id="selFoodList" resultType="FoodResultVO">
+        SELECT DISTINCT A.ifood,B.key_value AS f_cookery,A.f_nm,A.f_img,
+                        C.key_value AS f_season,D.key_value AS f_worlddiv,A.f_alone,
+            (SELECT group_concat(alkkind) FROM o_alk E
+            JOIN o_food_alk F
+            ON E.alknum = F.alknum
+            WHERE F.ifood = A.ifood )AS alk,
+            (SELECT group_concat(igdkind) FROM o_igd H
+            JOIN o_food_igd I
+            ON H.igdnum = I.igdnum
+            WHERE I.ifood = A.ifood )AS igd FROM o_food A
+        JOIN connect_common B
+        ON B.sub_key = A.f_cookery
+        JOIN connect_common C
+        ON C.sub_key = A.f_season
+        JOIN connect_common D
+        ON D.sub_key = A.f_worlddiv
+        JOIN o_food_igd G
+        ON G.ifood = A.ifood
+        <if test="alknum>0">
+            JOIN o_food_alk F
+            ON F.ifood = A.ifood
+        </if>
+        WHERE B.master_key = 2 and C.master_key = 3 and D.master_key = 4
+        <if test="f_cookery!=null">
+            <foreach collection="f_cookery" item="item" >
+                and A.f_cookery != ${item}
+            </foreach>
+        </if>
+        <if test="f_worlddiv!=null">
+            <foreach collection="f_worlddiv" item="item" >
+              and A.f_worlddiv != ${item}
+            </foreach>
+        </if>
+        <if test="igd!=null">
+            <foreach collection="igd" item="item">
+              and  G.ifood not in (SELECT ifood FROM o_food_igd WHERE igdnum = ${item})
+            </foreach>
+        </if>
+        <if test="f_season>0">
+            and A.f_season = ${f_season}
+        </if>
+        <if test="alknum>0">
+            and F.alknum = ${alknum}
+        </if>
+        <if test="alone == 1">
+            and f_alone = ${alone}
+        </if>
+        <if test="f_nm!=null and f_nm!=''">
+            and A.f_nm = #{f_nm}
+        </if>
+        <if test="fdnum>0">
+            order by rand()
+            Limit 0,${fdnum}
+        </if>
+        <if test="recordcount>0">
+            limit ${rowcnt},${recordcount}
+        </if>
+    </select>
+
+    <update id="insFoodImg">
+        update o_food
+        set f_img = #{f_img}
+        where f_nm = #{f_nm}
+    </update>
+
+    <select id="selMaxPage" resultType="Integer">
+        select ceil(count(A.ifood)/${recordcount})
+        from o_food A
+        <if test="alknum>0">
+            JOIN o_food_alk B
+            ON A.ifood = B.ifood
+            WHERE B.alknum = ${alknum}
+        </if>
+        <if test="f_season>0">
+            where A.f_season = ${f_season}
+        </if>
+    </select>
+
+</mapper>

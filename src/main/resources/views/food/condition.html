@@ -1,0 +1,118 @@
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="temp/thymeleaf_layout">
+<head>
+    <link rel="stylesheet" th:href="@{/css/food/condition.css}">
+    <script defer th:src="@{/js/food/condition.js}"></script>
+    <script defer th:src="@{/js/food/conmap.js}"></script>
+    <meta charset="UTF-8">
+    <title>Food</title>
+</head>
+<th:block layout:fragment="content">
+    <div class="flex-c-c">
+        <img class="random-food-banner" src="/img/con1.png">
+    </div>
+    <div class="random-food-container flex-c-c">
+        <section class="random-food-condition">
+            <i class="fas fa-random f-s-40 flex-c-c cc"></i>
+            <div class="line">검색 조건</div>
+            <div class="flex-c-c ">
+                <div class="f-s-20 text-emph">제거하고 싶은 항목을 클릭하세요!</div>
+            </div>
+            <div class="fc-box flex-c-c mt40 mb100" id="fcf_box">
+                <form id="foodCheckFrm" class="flex-c-c" method="post">
+                    <div>
+                        <fieldset class="flex-c-c">
+                            <div class="fsfw mb20">조리방법</div>
+                            <fieldset class="w100 flex-c-r g30 border-rd mb50">
+                                <th:block th:each="item:${f_cookery}">
+                                    <label th:inline="text">
+                                        [[ ${item.keyNm} ]]
+                                        <input type="checkbox" name="f_cookery" th:value="${item.keyValue}">
+                                    </label>
+                                </th:block>
+                            </fieldset>
+                            <div class="w100 confm-grid">
+                                <div class="confm-item">
+                                    <div class="fsfw mb20">나라별</div>
+                                    <fieldset class="flex-c-r g30 border-rd mb20">
+                                        <th:block th:each="item:${f_worlddiv}">
+                                            <label th:inline="text">
+                                                [[ ${item.keyNm} ]]
+                                                <input type="checkbox" name="f_worlddiv" th:value="${item.keyValue}">
+                                            </label>
+                                        </th:block>
+                                    </fieldset>
+                                </div>
+                                <div class="confm-item">
+                                    <div class="fsfw mb20">재료별</div>
+                                    <fieldset class="flex-c-r g30 border-rd mb20">
+                                        <th:block th:each="item:${igd}">
+                                            <label th:inline="text">
+                                                [[ ${item.keyNm} ]]
+                                                <input type="checkbox" name="igd" th:value="${item.keyValue}">
+                                            </label>
+                                        </th:block>
+                                    </fieldset>
+                                </div>
+                                <div class="confm-item">
+                                    <div class="fsfw mb20">인원수</div>
+                                    <fieldset class="flex-c-r g30 border-rd mb20">
+                                        <label class="chk-o">상관없음<input  type="radio" name="alone" value="0" checked></label>
+                                        <label>1인분<input type="radio" name="alone" value="1"></label>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="flex-c-r g100 mt60">
+                        <div id="btn_reset" class="con-btn-box pointer flex-c-r">
+                            <img  class="wh-btn" src="/img/con_re.png">
+                            <div class="fsfw15">리셋</div>
+                        </div>
+                        <div id="btn_search" class="con-btn-box pointer flex-c-r">
+                            <img class="wh-btn" src="/img/con_go_b.png">
+                            <div class="fsfw15">검색</div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="line"><i id="food_light" class="far fa-lightbulb"></i></div>
+        </section>
+        <section id="s_food_img" class="random-food-img-info mt40 mb100">
+            <div class="flex-c-c">
+                <div class="food-result-nm mb20" id="foodNmInfo"></div>
+            </div>
+            <div class="flex-c-r g50" id="foodutils_btn_box">
+                <div class="flex-c-r food-ag-box" id="food_ag_btn">
+                    <div>다른음식</div>
+                    <img class="food-ag-img" src="/img/con_ag_r.png">
+                </div>
+                <th:block sec:authorize="isAuthenticated()">
+                    <div class="food-zzim-btn flex-c-c" id="food_zzim_btn">
+
+                    </div>
+                </th:block>
+            </div>
+            <div class="flex-c-r">
+                <div class="food-bn-container">
+                    <div class="swiper-wrapper" id="swiper_fdbn">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="s_food_map" class="random-food-map">
+            <div class="line"><i id="showmap_btn" class="f-s-40 fas fa-map-marked-alt"></i></div>
+            <div id="map_title" class="flex-c-r mt20"></div>
+            <div class="map-restbox flex-c-c g30 mt60">
+                <div id="map" style="width:100%; height:400px;"></div>
+                <div id="restaurant_box" class="restbox"></div>
+            </div>
+        </section>
+    </div>
+    <div class="food-caution">주의 : 음식에 해당하는 조건들 중 일부분은
+        team-gsvn의 주관적인 의견이 담겨있으며, 이미지들은 naver의 이미지 검색 api를 통해 가져오는 것 이고,
+        내주변 식당은 kakao 장소검색 api를 활용해 근방 5km를 탐색한다
+    </div>
+</th:block>

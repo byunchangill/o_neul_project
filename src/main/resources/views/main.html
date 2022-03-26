@@ -1,0 +1,121 @@
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="temp/thymeleaf_layout">
+<head>
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <script defer src="/res/js/mainmap.js"></script>
+    <script defer th:src="@{/js/main.js}"></script>
+    <meta charset="UTF-8">
+    <title>Main</title>
+</head>
+<th:block layout:fragment="content">
+    <div class="bn">
+        <div class="bn-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img class="w100" src="/img/con1.png"/></div>
+                <div class="swiper-slide"><img src="/img/br_bnr.png"/></div>
+                <div class="swiper-slide"><img src="/img/b3.png"/></div>
+                <div class="swiper-slide"><img src="/img/b7.png"/></div>
+                <div class="swiper-slide"><img src="/img/jmt_main_br.png"/></div>
+                <div class="swiper-slide"><img src="/img/ss_bn.png"/></div>
+                <div class="swiper-slide bg-light"><img src="/img/b6.png"/></div>
+            </div>
+            <!-- 페이징 -->
+            <div class="swiper-pagination"></div>
+            <!-- 네비게이션 -->
+        </div>
+    </div>
+    <div class="main-container">
+        <section class="foodrd ">
+            <i id="foodImg" class="fas fa-hamburger flex-c-c f-s-40 cc"></i>
+            <div class="line">오늘의 음식</div>
+            <div class="flex-c-r mt60">: 뭐 먹을지 고민될 때 :</div>
+            <div class="rdfood-main mt60">
+                <ul class="rdfood-list" id="food_list">
+
+                </ul>
+            </div>
+            <div class="flex-c-r mt150">
+                <div class="main-btn-box">
+                    <div class="flex-c-c">
+                        <i id="foodRe" class="f-s-30 fas fa-redo-alt pointer"></i>
+                        <span class="f-s-15">다시 검색</span>
+                    </div>
+                    <div class="flex-c-c">
+                        <i id="foodGo" class="f-s-30 far fa-arrow-alt-circle-right pointer"></i>
+                        <span class="f-s-15">상세 검색</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="jmt">
+            <div class="flex-c-r"><i class="f-s-40 fas fa-utensils cc"></i></div>
+            <div class="line">오늘의 맛집</div>
+            <div class="flex-c-c">
+                <div class="flex-c-r text-emph mt60" id="jmtAddrInfo"></div>
+            </div>
+            <div class="gridlist-box mt60">
+                <ul id="jmtList" class="rcrest-list"></ul>
+            </div>
+            <div class="flex-c-r">
+                <div class="jmt-btn-box" id="jmt_list_go">
+                    <i class="jmtGo f-s-40 fas fa-angle-double-right pointer"></i>
+                    <span class="f-s-20">더보기</span>
+                </div>
+            </div>
+        </section>
+        <section class="broad mt100 mb50">
+            <div class="flex-c-r"><i class="fas fa-tv f-s-40 cc"></i></div>
+            <div class="line">TV 맛집</div>
+            <div class="flex-c-r mt100 mb20">: 방송에 나온 맛집들 :</div>
+            <div class="swiper-container mt60">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><a href="/tv/1"><img src="/img/matguys.jpg"/></a></div>
+                    <div class="swiper-slide"><a href="/tv/2"><img src="/img/back3.jpg"/></a></div>
+                    <div class="swiper-slide"><a href="/tv/3"><img src="/img/sangsang.jpg"/></a></div>
+                    <div class="swiper-slide"><a href="/tv/4"><img src="/img/wed.png"/></a></div>
+                    <div class="swiper-slide"><a href="/tv/5"><img class="broad-yjroad" src="/img/yjroad.png"/></a></div>
+                    <div class="swiper-slide"><a href="/tv/6"><img class="broad-tasty" src="/img/tasty.png"/></a></div>
+                </div>
+                <!-- 네비게이션 -->
+                <div class="swiper-button-next"></div><!-- 다음 버튼 (오른쪽에 있는 버튼) -->
+                <div class="swiper-button-prev"></div><!-- 이전 버튼 -->
+
+                <!-- 페이징 -->
+                <div class="swiper-pagination"></div>
+            </div>
+        </section>
+        <section class="ss-ak">
+            <div class="line">Season & Alcohol</div>
+            <div class="flex-c-r w100 mt100">
+                <ul class="sa-list">
+                    <div class="flex-c-c">
+                        <div id="s_today" class="s-today flex-c-r mb20"></div>
+                        <li class="ss-list" id="ss_list"></li>
+                        <div class="jmt-btn-box" id="season_list_go">
+                            <i id="seasonGo" class="f-s-40 fas fa-snowflake pointer"></i>
+                            <span class="f-s-20">더보기</span>
+                        </div>
+                    </div>
+                    <div class="flex-c-c">
+                        <div>
+                            <fieldset class="flex-c-r g30 mb20 ">
+                                <label class="a-chk">소주<input  type="radio" name="alk" value="1" checked></label>
+                                <label>맥주<input type="radio" name="alk" value="2"></label>
+                                <label>막걸리<input type="radio" name="alk" value="3"></label>
+                                <label>양주<input type="radio" name="alk" value="4"></label>
+                            </fieldset>
+                        </div>
+                        <li class="ac-list" id="ac_list"></li>
+                        <div class="jmt-btn-box " id="alk_list_go">
+                            <i id="alkGo" class="f-s-40 fas fa-wine-glass-alt pointer"></i>
+                            <span class="f-s-20">더보기</span>
+                        </div>
+                    </div>
+                </ul>
+            </div>
+        </section>
+    </div>
+</th:block>
+</html>

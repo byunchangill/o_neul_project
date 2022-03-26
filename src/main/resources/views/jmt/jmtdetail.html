@@ -1,0 +1,110 @@
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="temp/thymeleaf_layout">
+<head>
+    <link rel="stylesheet" th:href="@{/css/jmt/jmtdetail.css}">
+    <script defer th:src="@{/js/jmt/jmtdetail.js}"></script>
+    <meta charset="UTF-8">
+    <title>Jmt</title>
+</head>
+<th:block layout:fragment="content">
+    <div id="datax" th:data-x="${jmtdeatil.j_x}"></div>
+    <div id="datay" th:data-y="${jmtdeatil.j_y}"></div>
+    <div id="ijmt" th:data-ijmt="${jmtdeatil.ijmt}"></div>
+    <section class="jmt-detail-container">
+        <section class="jmt-detail-bn">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <th:block th:each=" list : ${jmtdeatil.jpList}">
+                        <div class="swiper-slide flex-c-r"><img th:src="${list.orgurl}" onerror="this.src='/img/logo.png'"></div>
+                    </th:block>
+                </div>
+            </div>
+        </section>
+        <section class="jmt-detail-item-map mt60">
+            <div class="flex-c-r"><i class="clr-main f-s-40 fa-solid fa-magnifying-glass-plus"></i></div>
+            <div class="line" th:text="${jmtdeatil.j_placenm}"></div>
+            <div class="flex-c-r jmt-star-count" id="jmt_star_count"></div>
+            <div class="flex-c-r mt20"><div class="text-emph" th:text="${jmtdeatil.j_catenm}"></div>
+            </div>
+            <div class="flex-c-r mt40">
+                <div id="jmtmap" style="width:85%; height:300px;"></div>
+            </div>
+            <div class="flex-c-r mt40 jmt-detail-infoCon">
+                <div class="jmt-detail-infoBox">
+                    <div class="jmt-detail-basic">
+                        <div>
+                            <div class="jmt-detail-info g10">
+                                <i class="g fa-solid fa-location-dot flex-c-r g10">
+                                    <div th:text="${jmtdeatil.j_newaddr}"></div>
+                                </i>
+                            </div>
+                            <div class="jmt-detail-info g10">
+                                <i class="fa-solid fa-signs-post flex-c-r g10"><div th:text="${jmtdeatil.j_oldaddr}"></div>
+                                </i>
+                            </div>
+                            <th:block th:if="${jmtdeatil.j_phone.length()>0}">
+                                <div class="jmt-detail-info g10">
+                                    <i class="fa-solid fa-phone flex-c-r g10">
+                                        <div th:text="${jmtdeatil.j_phone}"></div>
+                                    </i>
+                                </div>
+                            </th:block>
+                        </div>
+                        <th:block sec:authorize="isAuthenticated()">
+                        <div class="flex">
+                            <div class="jmt-detail-zzim" id="jmt-zzim-btn">
+                            </div>
+                        </div>
+                        </th:block>
+                    </div>
+                    <th:block th:if="${jmtdeatil.jmList.length>0}">
+                        <div class="mt40">
+                            <div class="jmt-detail-menus line ">메뉴</div>
+                            <div class="flex-c-c g50">
+                                <th:block th:each="list : ${jmtdeatil.jmList}">
+                                    <div class="jmt-detail-menuitem">
+                                        <div class="jmt-detail-menuprice">
+                                            <div th:text="${list.menu}"></div>
+                                            <div th:text="${list.price}"></div>
+                                        </div>
+                                        <th:block th:if="${list.img!=null}">
+                                            <div>
+                                                <img th:src="${list.img}">
+                                            </div>
+                                        </th:block>
+                                    </div>
+                                </th:block>
+                            </div>
+                        </div>
+                    </th:block>
+                    <section class="jmt-detail-review mt60">
+                        <div class="line jmt-detail-menus">리뷰</div>
+                        <div class="jmt-review-infoBox">
+                            <div class="review-count" id="review_count"></div>
+                            <th:block sec:authorize="isAuthenticated()">
+                                <div class="review-write" id="review_write"><i class="fa-solid fa-pen-to-square"></i>리뷰쓰기</div>
+                            </th:block>
+                        </div>
+                        <div class="jmt-review-list mt20" id="jmt_review_list">
+
+                        </div>
+                    </section>
+
+                </div>
+            </div>
+
+        </section>
+        <div class="flex-c-c mt100">
+            <section class="jmt-detail-other">
+                <div class="line"><i class="fa-solid fa-utensils clr-main"></i></div>
+                <div class="flex-c-c mt20">
+                    <div class="text-emph" th:inline="text">[[${jmtdeatil.j_placenm}]] 주변 맛집</div>
+                </div>
+                <div class="jmt-dflist mt40 flex-c-r g50" id="jmt_dflist"></div>
+            </section>
+        </div>
+    </section>
+</th:block>
+</html>

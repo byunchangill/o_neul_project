@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <link rel="stylesheet" th:href="@{/css/user/join.css}">
+    <script defer th:src="@{/js/user/nickname.js}"></script>
+    <script defer th:inline="javascript" th:src="@{/js/common.js}"></script>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<section class="login-container flex-c-r">
+    <div class="video-login-container ">
+        <div>
+            <div class="flex-c-r f-s-40 mt100"><i class="clr-main fa-regular fa-id-card"></i></div>
+            <div class="line">닉네임 변경</div>
+        </div>
+        <form id="join-frm" class="mt40">
+            <div><label>변경 닉네임 : <input type="text" name="u_nickname" required></label></div>
+            <div class="mt10"><span id="nickname-chk-msg"></span></div>
+            <hr class="mt20 mb20 nickline">
+            <div class="flex-c-r g30">
+                <div><input type="submit" value="변경" id="submitBtn" class="email-chk-btn"></div>
+            </div>
+        </form>
+    </div>
+</section>
+
+</body>
+</html>

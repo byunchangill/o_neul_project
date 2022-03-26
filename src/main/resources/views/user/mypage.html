@@ -1,0 +1,74 @@
+
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="temp/thymeleaf_layout">
+<head>
+    <link rel="stylesheet" th:href="@{/css/user/mypage.css}">
+    <script defer th:src="@{/js/user/mypage.js}"></script>
+    <meta charset="UTF-8">
+    <title>Broad</title>
+</head>
+<th:block layout:fragment="content">
+    <section class="mypage-container mt60">
+        <div>
+            <div class="flex-c-r f-s-40"><i class="clr-main fa-regular fa-id-card"></i></div>
+            <div class="line">마이페이지</div>
+        </div>
+        <div class="flex-c-r mt100 container-border">
+            <div class="mypage-info-container">
+                <div class="mypage-profileimg-box">
+                    <div id="profile-view">
+                    </div>
+                    <input type="file" id="profile-file" class="hidden" accept="image/*">
+                </div>
+
+                <div class="mypage-info-box">
+
+                    <div id="myProfile">
+
+                    </div>
+                    <div id="myNickname">
+
+                    </div>
+                    <div class="mypage-btn flex-c-c mt100" id="mypage_btn">
+                        <div class="flex-c-c" id="nickNmBtn">닉네임 설정</div>
+                    </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <hr class="mt100 mb100">
+        <div class="flex-c-c container-border">
+            <div class="zzim-container flex-c-c">
+                <div class="zzim-food-container">
+                    <div class="flex-c-c">
+                        <div class="zzim-title mb50"> 음식 찜목록</div>
+                        <div id="food_count" class="text-emph"></div>
+                    </div>
+                    <div class="zzim-food-list mt20" id="zzim_food">
+                        <div class="swiper-wrapper">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="zzim-jmt-container">
+                    <div class="flex-c-c">
+                        <div class="zzim-title mt60 mb50">맛집 찜목록</div>
+                        <div id="jmt_count" class="text-emph"></div>
+                    </div>
+                    <div class="zzim-jmt-list mt20" id="zzim_jmt">
+                        <div class="swiper-wrapper">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </section>
+</th:block>

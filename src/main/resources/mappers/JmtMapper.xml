@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gsvl.oneul.jmt.JmtMapper">
+    <insert id="insJmt">
+        INSERT INTO o_jmt
+            (ijmt, j_placenm, j_phone, j_oldaddr, j_newaddr, j_catenm, j_x, j_y)
+        VALUES
+            (#{ijmt}, #{j_placenm}, #{j_phone}, #{j_oldaddr}, #{j_newaddr}, #{j_catenm}, #{j_x}, #{j_y})
+    </insert>
+    <select id="selJmt" resultType="JmtEntity">
+        SELECT * FROM o_jmt
+        WHERE ijmt = #{ijmt}
+    </select>
+
+    <insert id="insImg">
+        insert into o_jmt_img
+        (ijmt,j_src)
+        VALUES
+        <foreach collection="jpList" item="item" separator=",">
+            (#{item.ijmt},#{item.orgurl})
+        </foreach>
+
+    </insert>
+    <insert id="insMenus">
+        insert into o_jmt_menu
+        (ijmt,j_nm,j_price,j_menuimg)
+        values
+        <foreach collection="jmList" item="item" separator=",">
+            (#{item.ijmt},#{item.menu},#{item.price},#{item.img})
+        </foreach>
+    </insert>
+
+    
+    <resultMap id="jmtMap" type="JmtVO">
+        <result property="ijmt" column="ijmt"></result>
+        <collection property="jpList" column="ijmt" select="selJmtImgList"></collection>
+        <collection property="jmList" column="ijmt" select="selMenuList"></collection>
+        <collection property="jstars" column="ijmt" select="selJmtStars"></collection>
+    </resultMap>
+    <!--    resultMap의 id,기준점-->
+    <select id="selJmtDetail" resultMap="jmtMap">
+        select ijmt,j_placenm,j_phone,j_oldaddr,j_newaddr,j_catenm,j_x,j_y
+        from o_jmt
+        where ijmt = #{ijmt}
+    </select>
+    <!--    resultMap과 mapping-->
+    <select id="selJmtImgList" resultType="JsonPhotoList">
+        select j_src as orgurl from o_jmt_img where ijmt = #{ijmt}
+    </select>
+    <select id="selMenuList" resultType="JsonMenuList">
+        select j_nm as menu, j_price as price,j_menuimg as img from o_jmt_menu where ijmt = #{ijmt}
+    </select>
+    <select id="selJmtStars" resultType="Float">
+        SELECT sum(j_star)/COUNT(j_star) FROM o_jmt_review WHERE ijmt = ${ijmt};
+    </select>
+
+</mapper>

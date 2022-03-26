@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gsvl.oneul.jmt.review.JmtReviewMapper">
+    <insert id="insReview" useGeneratedKeys="true" keyProperty="icmt">
+        INSERT INTO o_jmt_review (ijmt, iuser, j_ctnt, j_star)
+        VALUES ( #{ijmt}, #{iuser}, #{j_ctnt}, #{j_star})
+    </insert>
+
+    <resultMap id="JmtReviewListMap" type="JmtReviewVO">
+        <result property="icmt" column="icmt"></result>
+        <collection property="j_img" column="icmt" select="selReviewImg"></collection>
+    </resultMap>
+
+    <select id="selReviewList" resultMap="JmtReviewListMap">
+        SELECT A.*, B.u_nm AS username,B.u_profileimg,B.u_nickname
+        FROM o_jmt_review A
+        LEFT JOIN o_user B
+        ON A.iuser = B.iuser
+        WHERE A.ijmt = ${ijmt}
+        ORDER BY icmt
+    </select>
+
+    <select id="selReviewImg" resultType="String">
+        select j_img from o_review_img
+        where icmt=#{icmt}
+    </select>
+
+    <select id="selReview" resultType="JmtReviewVo">
+        select * from o_jmt_review
+
+        where iuser=#{iuser} and ijmt = #{ijmt}
+
+    </select>
+
+
+<!--    사진 추가되면 사진도 같이 삭제되도록-->
+    <delete id="delReview">
+        delete from o_jmt_review
+        where icmt = ${icmt} and iuser = ${iuser}
+    </delete>
+
+    <delete id="delReviewImg">
+        delete from o_review_img
+        where icmt = ${icmt}
+    </delete>
+
+    <update id="updReview">
+        update o_jmt_review
+        set j_ctnt = #{j_ctnt},j_star = #{j_star}
+        where icmt = ${icmt} and iuser = ${iuser}
+    </update>
+
+    <insert id="insReviewImg" >
+        insert into o_review_img
+        (icmt,j_img)
+        values
+        <foreach collection="j_img" item="item" separator=",">
+            (#{icmt},#{item})
+        </foreach>
+    </insert>
+
+<!--    하나의 jmt에 총 별점 몇점인지-->
+    <select id="selJmtStars" resultType="Float">
+        SELECT sum(j_star)/COUNT(j_star) FROM o_jmt_review WHERE ijmt = ${ijmt};
+    </select>
+</mapper>

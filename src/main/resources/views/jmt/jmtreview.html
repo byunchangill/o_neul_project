@@ -1,0 +1,83 @@
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="temp/thymeleaf_layout">
+<head>
+    <link rel="stylesheet" th:href="@{/css/jmt/jmtreview.css}">
+    <script defer th:src="@{/js/jmt/jmtreview.js}"></script>
+    <meta charset="UTF-8">
+    <title>review</title>
+</head>
+<th:block layout:fragment="content">
+    <section id="review_form_container" class="jmt-review-container">
+        <div id="ijmt" th:data-ijmt="${jmtdeatil.ijmt}"></div>
+        <div class="flex-c-c f-s-40 clr-main">
+            <i class="fa-regular fa-comments"></i>
+        </div>
+        <div>
+            <th:block th:if="${jmtreview == null}">
+                <div class="line" th:inline="text">[[${jmtdeatil.j_placenm}]] 리뷰 작성</div>
+            </th:block>
+            <th:block th:if="${jmtreview ne null}">
+                <input type="hidden" id="jmt_upd_star" th:value="${jmtreview.j_star}">
+                <input type="hidden" id="jmt_icmt" th:value="${jmtreview.icmt}">
+                <div class="line" th:inline="text">[[${jmtdeatil.j_placenm}]] 리뷰 수정</div>
+            </th:block>
+        </div>
+        <section class="flex-c-c mt40">
+            <div class="flex-c-c jmt-detail-box">
+                <div class="rating">
+                    <!-- 해당 별점을 클릭하면 해당 별과 그 왼쪽의 모든 별의 체크박스에 checked 적용 -->
+                    <input type="checkbox" name="rating" id="rating1" value="1" class="rate_radio" title="1점">
+                    <label for="rating1"></label>
+                    <input type="checkbox" name="rating" id="rating2" value="2" class="rate_radio" title="2점">
+                    <label for="rating2"></label>
+                    <input type="checkbox" name="rating" id="rating3" value="3" class="rate_radio" title="3점" >
+                    <label for="rating3"></label>
+                    <input type="checkbox" name="rating" id="rating4" value="4" class="rate_radio" title="4점">
+                    <label for="rating4"></label>
+                    <input type="checkbox" name="rating" id="rating5" value="5" class="rate_radio" title="5점">
+                    <label for="rating5"></label>
+                </div>
+                <div class="col">
+                    <th:block th:if="${jmtreview ne null}">
+                    <textarea rows="10" th:text="${jmtreview.j_ctnt}" name="ctnt" class="jmt-review-text"></textarea>
+                    </th:block>
+                    <th:block th:if="${jmtreview == null}">
+                        <textarea rows="10"  name="ctnt" class="jmt-review-text"></textarea>
+                    </th:block>
+                </div>
+                <div class="col">
+                    <th:block th:if="${jmtreview == null}">
+                        <button type="button" name="review_write" class="btn btn-primary">전송</button>
+                    </th:block>
+                    <th:block th:if="${jmtreview ne null}">
+                        <button type="button" name="review_change" class="btn btn-primary">수정</button>
+                    </th:block>
+                </div>
+                <hr class="w100 mt40">
+                <div class="flex-c-r">이미지 업로드</div>
+
+                <div class="mt60">
+                    <div class="jmt-riview-imgup">
+
+                        <div class="flex-c-r">
+                            <input multiple="multiple" type="file" id="review_img_file" accept="image/*">
+                            <div id="imgfile_nm"></div>
+                        </div>
+                        <div id="review_img_preveiw" class="flex-c-r g30">
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+    </section>
+    <div class="flex-c-r">
+        *주의* 허위 리뷰는 신고 및 제제의 대상이 될수 있습니다. 리뷰는 당신을 비추는 거울입니다.
+    </div>
+</th:block>
+</html>

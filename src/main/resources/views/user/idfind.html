@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <link rel="stylesheet" th:href="@{/css/user/join.css}">
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <script defer th:src="@{/js/user/idfind.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/video.css}">
+    <script defer th:src="@{/js/video.js}"></script>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<section class="join-container flex-c-c">
+    <div class="video-join-container ">
+        <div>
+            <div class="line"><a href="/"><img class="join-logo" src="/img/logo.png"></a></div>
+        </div>
+        <div class="flex-c-r">
+            <form th:action="@{/user/idfind}" method="post" id="join-frm" class="join-form flex-c-c mt40">
+                <div class="join-info-container">
+                    <div><label for="u_nm">name</label></div>
+                    <input type="text" name="u_nm" id="u_nm" required>
+                    <div><span id="nm-chk-msg"></span></div>
+                    <span><label>e-mail</label></span>
+                    <div class="mb10">
+                        <input type="text" name="u_email" required>&nbsp;@&nbsp;<input class="email-domain" type="text"
+                                                                                       name="addres" required>
+                        <select id="selEmail" onchange="checkemailaddy();">
+                            <option value="1">직접 입력</option>
+                            <option value="naver.com">naver.com</option>
+                            <option value="gmail.com">gmail.com</option>
+                            <option value="daum.net">daum.net</option>
+                            <option value="kakao.com">kakao.com</option>
+                            <option value="bing.com">bing.com</option>
+                        </select>
+                    </div>
+
+                    <div><button type="button" class="email-chk-btn ipbtn" id="email-btn-chk">회원정보 인증</button>
+                        <span id="email-chk-msg"></span></div>
+                    <div id="mailpassword">
+
+                    </div>
+                </div>
+                <hr class="mt40 mb20">
+                <div class="flex-c-r g30">
+                    <div><input type="button" id="resultBtn" value="확인" class="email-chk-btn ipbtn"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</section>
+
+</body>
+</html>

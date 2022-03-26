@@ -1,0 +1,56 @@
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="temp/thymeleaf_layout">
+<head>
+    <link rel="stylesheet"  th:href="@{/css/notice/noticedetail.css}">
+    <script defer th:src="@{/js/notice/noticedetail.js}"></script>
+    <meta charset="UTF-8">
+    <title>notice Detail</title>
+</head>
+<th:block layout:fragment="content">
+    <section class="ss-bn-container">
+        <div class="flex-c-c">
+            <img src="/img/notice_bn.jpg"> <!--공고사항 배너 이미지-->
+        </div>
+    </section>
+
+    <section class="notice-detail-content-container">
+        <div> <!--공지사항 아이콘.-->
+            <div class="line" id="notice_icon"><i class="fa-solid fa-circle-info"></i></div>
+            <div id="notice_detail_list" class="notice_detail_list">
+                <table class="table caption-top">
+                    <thead>
+                        <tr>
+                            <th>
+                                <!--디테일 제목-->
+                                <div th:text="${noticedetail.n_title}"></div>
+
+                                <!-- 작성 시간 -->
+                                <div class="notice_time" th:text="${noticedetail.n_rdt.split(' ')[0]}"></div>
+                            </th>
+                        </tr>
+
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <!--디테일 내용-->
+                            <td class="notice_ctnt" th:text="${noticedetail.n_ctnt}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- 수정 / 삭제 -->
+                <div class="notice_mod_del">
+                    <div sec:authorize="hasRole('ROLE_ADMIN')">
+                        <button id="update" class="btn btn-primary">수정</button>
+                        <button id="del" class="btn btn-primary">삭제</button>
+                    </div>
+                </div>
+
+                <button id="list_btn" class="list_btn">목록</button>
+            </div>
+        </div>
+    </section>
+</th:block>
+</html>

@@ -1,0 +1,40 @@
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="temp/thymeleaf_layout">
+<head>
+    <link rel="stylesheet"  th:href="@{/css/notice/write.css}">
+    <script defer th:src="@{/js/notice/write.js}"></script>
+    <meta charset="UTF-8">
+    <title>write</title>
+</head>
+<th:block layout:fragment="content">
+    <section class="ss-bn-container">
+        <div class="flex-c-c">
+            <img src="/img/notice_bn.jpg"> <!--공고사항 배너 이미지-->
+        </div>
+    </section>
+
+    <section class="notice-content-container">
+        <div> <!--공지사항 아이콘.-->
+            <div class="line" id="notice_icon"><i class="fa-solid fa-circle-info"></i></div>
+            <div id="notice_write" class="notice_write">
+                <form method="post" th:action="@{/notice/write}" th:object="${entity}">
+                    <div class="form-floating mb-3">
+                        <input required type="text" class="form-control" placeholder="n_title" th:field="*{n_title}">
+                        <label class="form-label" for="n_title">제목</label>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="n_ctnt" class="form-label">내용</label>
+                        <textarea class="form-control" th:field="*{n_ctnt}" rows="3"></textarea>
+                    </div>
+                    <div>
+                        <button class="btn btn-primary" type="submit">저장</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</th:block>
+</html>

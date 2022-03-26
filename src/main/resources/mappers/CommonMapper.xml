@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gsvl.oneul.common.CommonMapper">
+    <select id="selSubKeyList" resultType="SubKeyEntity">
+        <if test="masterNum == 7">
+            select igdnum as keyValue, igdkind as keyNm from o_igd
+        </if>
+        <if test="masterNum == 6">
+            select alknum as keyValue, alkkind as keyNm from o_alk
+        </if>
+        <if test="masterNum lte 5">
+            SELECT key_value as keyNm,sub_key as keyValue  FROM connect_common WHERE master_key = ${masterNum};
+        </if>
+    </select>
+
+</mapper>

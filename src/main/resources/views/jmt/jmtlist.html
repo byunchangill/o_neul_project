@@ -1,0 +1,66 @@
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="temp/thymeleaf_layout">
+<head>
+    <link rel="stylesheet" th:href="@{/css/jmt/jmtlist.css}">
+    <script defer th:src="@{/js/jmt/jmtlist.js}"></script>
+    <meta charset="UTF-8">
+    <title>Jmt</title>
+</head>
+<th:block layout:fragment="content">
+    <section class="jmt-bn-container">
+        <div class="flex-c-c">
+            <img src="/img/jmt_main_br.png">
+        </div>
+    </section>
+    <section class="jmt-content-container">
+        <section class="jmt-bn-map-pick ">
+            <div class="mb50">
+                <div  class="line">
+                    <div class="flex-c-r g50 clr-main">
+                        <i class="flex-c-r fa-solid fa-map-location-dot f-s-40"></i>
+                        <div>x</div>
+                        <i class="flex-c-r fa-solid fa-utensils f-s-40"></i>
+                    </div>
+                </div>
+                <div class="flex-c-c mt20">
+                    <div id="jmt_addr" class="flex-c-r text-emph f-s-30"></div>
+                </div>
+            </div>
+            <div class="jmt-map-pick-container g100">
+                <div class="jmt-map-box">
+                    <div class="f-s-20 jmt-text-box text-emph">내 주변 맛집</div>
+                    <div>
+                        <div id="jmtmap" style="width:600px; height:600px;"></div>
+                    </div>
+                </div>
+                <div class="jmt-pick-box">
+                    <div class="f-s-20 jmt-text-box text-emph">오늘의 추천맛집</div>
+                    <div>
+                        <div class="jmt-pick" id="jmt_pick">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="jmt-list-container mt150 mb100">
+            <div>
+                <div class="line">
+                    <i class="fa-solid fa-rectangle-list clr-main"></i>
+                </div>
+                <div class="flex-c-c">
+                    <div id="list_text" class="flex-c-r text-emph"></div>
+                </div>
+            </div>
+            <div class="mt60">
+                <div class="jmt-list-box mt100" id="jmt_list_box">
+                </div>
+                <div class="flex-c-r mt100">
+                    <div id="list_page_box" class="jmt-page-box flex-c-r g30"></div>
+                </div>
+            </div>
+        </section>
+    </section>
+</th:block>
+</html>

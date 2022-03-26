@@ -1,0 +1,31 @@
+.notice_detail_list {
+    margin: auto;
+    text-align: center;
+}
+.notice-detail-content-container{
+    width: 100%;
+    height: 100%;
+    padding: 50px 100px;
+}
+
+.list_btn {
+    color: #fff;
+    background-color: #4d4d4d;
+    border: 0;
+    outline: 0;
+    width: 100px;
+    height: 40px;
+    font-size: 14px;
+}
+
+.notice_time {
+    text-align: end;
+}
+
+.notice_mod_del {
+    text-align: start;
+}
+
+tr, td, div {
+    font-size: 20px;
+}

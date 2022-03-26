@@ -1,0 +1,40 @@
+.notice_list {
+    margin: auto;
+    text-align: center;
+}
+.notice-content-container{
+    width: 100%;
+    height: 100%;
+    padding: 50px 100px;
+}
+
+.page-link {
+    color: #252323;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+.btn-primary {
+    background-color: darkblue;
+    border-color: black;
+}
+
+.notice_a:link {
+    color: red;
+}
+
+tr {
+    font-size: 20px;
+}
+
+td {
+    font-size: 20px;
+}
+
+.new_icon {
+    font-size: 12px;
+    padding: 3px;
+    color: red;
+    font-weight: bold;
+}
+

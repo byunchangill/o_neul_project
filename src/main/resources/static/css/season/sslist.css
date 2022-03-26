@@ -1,0 +1,106 @@
+.ss-content-container{
+    width: 100%;
+    height: 100%;
+    padding: 50px 100px;
+}
+
+.ss-menu-pickitem{
+    width:1500px;
+    height: 500px;
+    gap: 100px;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+
+.ss-menu{
+    background-color: rgba(234, 195, 169, 0.42);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.ss-menu-box{
+    margin: 23px 13px;
+    padding: 10px 10px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+}
+.season_title{
+    padding: 15px 20px;
+    border-radius: 40px;
+}
+
+.season_title:hover{
+    cursor: pointer;
+}
+
+.season_title_click{
+    background-color: white;
+}
+.season_nm{
+}
+
+.ss-text{
+    border-radius: 30px;
+    background-color: white;
+    width: 600px;
+    height: 300px;
+    padding: 30px;
+}
+
+
+
+
+.ss-item{
+    background-color: rgba(234, 195, 169, 0.42);
+    border-radius: 20px;
+}
+.ss-item-show img{
+    border-radius: 20px;
+    width: 400px;
+    height: 230px;
+}
+.ss-item-show{
+    border-radius: 20px;
+    background-color: white;
+    width: 500px;
+    height: 350px;
+}
+.ss-btn-box div{
+    border-radius: 20px;
+    margin-top: 10px;
+    background-color: white;
+    cursor: pointer;
+    padding: 15px;
+}
+.ss-btn-box div:hover{
+    background-color: rgba(241, 200, 200, 0.89);
+}
+
+.season_list_img{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    gap: 50px;
+}
+
+.ss-img-item{
+
+}
+.ss-img-item img{
+    width: 300px;
+    height: 190px;
+    border-radius: 10px;
+}
+.ss-item-span1{
+    margin-top: 5px;
+    color: #ff4e7f;
+    font-size: 15px;
+}
+.ss-item-span2{
+    margin-top: 2px;
+    font-size: 17px;
+}

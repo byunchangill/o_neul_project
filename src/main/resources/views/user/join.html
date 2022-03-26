@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <link rel="stylesheet" th:href="@{/css/user/join.css}">
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <script defer th:src="@{/js/user/join.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/video.css}">
+    <script defer th:src="@{/js/video.js}"></script>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<section class="join-container flex-c-c">
+    <div class="video-join-container ">
+        <div>
+            <div class="line"><a href="/"><img class="join-logo" src="/img/logo.png"></a></div>
+        </div>
+        <div class="flex-c-r">
+            <form th:action="@{/user/join}" method="post" id="join-frm" class="join-form mt40">
+                <div class="join-info-container">
+                    <div><label for="u_id">id</label></div>
+                    <input type="text" name="u_id" id="u_id" required>
+                    <div><span id="id-chk-msg"></span></div>
+
+                    <div id="allpw">
+                        <div><label for="u_pw">pw</label></div>
+                        <input type="password" name="u_pw" id="u_pw" required>
+                        <div><span id="upw-chk-msg"></span></div>
+
+                        <div><label for="u_pw_re">pw-check</label></div>
+                        <input type="password" name="upw_chk" id="u_pw_re" required>
+                        <div><span id="upwchk-chk-msg"></span></div>
+                    </div>
+
+                    <div><label for="u_nm">name</label></div>
+                    <input type="text" name="u_nm" id="u_nm" required>
+                    <div><span id="nm-chk-msg"></span></div>
+                </div>
+                <div class="flex-c-c ">
+                    <hr class="mt40 mb50 wd500">
+                </div>
+                <div class="join-email-container">
+                    <span><label>e-mail</label></span>
+                    <div>
+                        <input type="text" name="u_email" required>&nbsp;@&nbsp;<input class="email-domain" type="text"
+                                                                                       name="addres" required>
+                        <select id="selEmail" onchange="checkemailaddy();">
+                            <option value="1">직접 입력</option>
+                            <option value="naver.com">naver.com</option>
+                            <option value="gmail.com">gmail.com</option>
+                            <option value="daum.net">daum.net</option>
+                            <option value="kakao.com">kakao.com</option>
+                            <option value="bing.com">bing.com</option>
+                        </select>
+                    </div>
+                    <span></span>
+
+
+                    <span><button type="button" class="email-chk-btn ipbtn mt10" id="email-btn-chk">이메일 확인</button><span
+                            id="email-chk-msg"></span></span>
+                    <div id="mailpassword" class="mt10">
+
+                    </div>
+
+                </div>
+                <div class="flex-c-c">
+                    <hr class="mt40 mb20 wd500">
+                </div>
+
+                <div class="flex-c-r g30">
+                    <input class="email-chk-btn ipbtn" type="submit" value="JOIN">
+                    <input class="email-chk-btn ipbtn" type="reset" value="RESET">
+                </div>
+            </form>
+        </div>
+    </div>
+
+</section>
+<video class="back_video" autoplay muted loop>
+    <source src="/video/backvideo.mp4" type="video/mp4">
+</video>
+</body>
+</html>

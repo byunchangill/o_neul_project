@@ -1,0 +1,64 @@
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="temp/thymeleaf_layout">
+<head>
+    <link rel="stylesheet" th:href="@{/css/tv/tvdetail.css}">
+    <script defer th:src="@{/js/tv/tvdetail.js}"></script>
+    <meta charset="UTF-8">
+    <title>Broad</title>
+</head>
+<th:block layout:fragment="content">
+    <section class="tv-bn-container">
+        <div class="flex-c-c">
+            <img src="/img/br_bnr.png">
+        </div>
+    </section>
+
+    <section class="tv-content-container ">
+        <div class="flex-c-r g100">
+            <span th:each="item : ${tvlist}" class="tvpro_item tvpro_btn">
+                <div class="tvpro_box flex-c-r">
+                    <div th:text="${item.keyNm}"></div>
+                </div>
+                <input type="hidden" class="tvpro_name" th:value="${item.keyValue}">
+            </span>
+        </div>
+
+        <div class="mt60">
+            <div class="line"><i class="fas fa-tv clr-main"></i></div>
+            <div class="flex-c-c mt40">
+                <div class="text-emph f-s-30 flex-c-r">
+                    <div th:text="${subKey.keyNm}"></div>
+                    <div>&nbsp맛집</div>
+                </div>
+            </div>
+
+            <div class="flex-c-c mt100">
+                <div class="tv-list" id="tv_list">
+<!--                    <th:block th:each="list : ${tvcastlist}">-->
+<!--                        <div class="tv-item">-->
+<!--                            <div class="tv_rest_nm" th:text="${list.t_restnm}"></div>-->
+<!--                            <div th:text="${list.t_img}"></div>-->
+<!--                        </div>-->
+<!--                    </th:block>-->
+                </div>
+            </div>
+
+            <div>
+                <input type="hidden" id="tv_maxpage" th:value="${maxpage}">
+                <input type="hidden" id="tv_proNm" th:value="${subKey.keyNm}">
+            </div>
+
+            <div class="youtube-modal" id="youtube_modal">
+                <div class="youtube-model-box">
+                    <div class="mb50 youtube-cancel-btn flex-c-r" id="youtube_cancel_btn" >
+                        <div>닫기</div>
+                    </div>
+                    <div id="youtube_box"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+</th:block>
+</html>

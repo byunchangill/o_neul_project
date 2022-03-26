@@ -1,0 +1,29 @@
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="temp/thymeleaf_layout">
+<head>
+    <link rel="stylesheet" th:href="@{/css/searchlist.css}">
+    <script defer th:src="@{/js/searchlist.js}"></script>
+    <meta charset="UTF-8">
+    <title>searchlist</title>
+</head>
+<th:block layout:fragment="content">
+    <input type="hidden" id="search_keyword" th:value="${keyword}">
+    <section class="search-container">
+        <div>
+            <div class="flex-c-c"><i class="fa-solid fa-magnifying-glass f-s-40 clr-main"></i></div>
+            <div class="line">맛집 검색 결과</div>
+            <div class="flex-c-c">
+                <div id="search_text" class="text-emph"></div>
+            </div>
+        </div>
+        <div>
+        </div>
+        <div class="mt60">
+            <div class="search-list-box mt100" id="search_list_box">
+            </div>
+        </div>
+    </section>
+</th:block>
+</html>

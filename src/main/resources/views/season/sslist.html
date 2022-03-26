@@ -1,0 +1,61 @@
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="temp/thymeleaf_layout">
+<head>
+    <link rel="stylesheet"  th:href="@{/css/season/sslist.css}">
+    <script defer th:src="@{/js/season/sslist.js}"></script>
+    <meta charset="UTF-8">
+    <title>season</title>
+</head>
+<th:block layout:fragment="content">
+    <section class="ss-bn-container">
+        <div class="flex-c-c">
+            <img src="/img/ss_bn.png"> <!--계절별맛집 배너 이미지-->
+        </div>
+    </section>
+
+    <section class="ss-content-container">
+        <div> <!--계절별 아이콘 띄우기.-->
+            <div class="line" id="season_icon"></div>
+            <div class="flex-c-r">
+                <div id="s_today" class="s-today flex-c-r mb20 text-emph"></div>
+            </div>
+        </div>
+
+        <div class="flex-c-r mt60">
+            <div class="ss-menu-pickitem">
+                <div class="ss-menu"> <!--계절 이름 띄우기-->
+                    <div class="ss-menu-box ">
+                        <span th:each="item : ${f_season}" class="season_title">
+                            <div class="season_nm" th:text="${item.keyNm}"></div>
+                            <input type="hidden" class="season_num" th:value="${item.keyValue}">
+                        </span>
+                    </div>
+                    <div class="flex-c-c g10">
+                        <div class="ss-text mt20 flex-c-c g10" id="ss_text">
+                        </div>
+                    </div>
+                </div>
+                <div class="ss-item flex-c-c">
+                    <div class="ss-item-show flex-c-c mt20" id="ss_item_show">
+                        <img src="/img/rp2.png">
+                    </div>
+                    <div class="ss-btn-box flex-c-r g100">
+                        <div id="imgStart">START</div>
+                        <div id="imgStop">STOP</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt100"> <!--계절별에 맞는 메뉴 띄우기-->
+            <div class="flex-c-c">
+                <div class="flex-c-c">
+                    <div id="season_list_img" class="season_list_img"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+</th:block>
+</html>

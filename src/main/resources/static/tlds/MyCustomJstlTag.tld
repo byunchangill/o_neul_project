@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd" version="2.0">
+
+    <description>MyCustomJstlTag functions library</description>
+    <display-name>MyCustomJstlTag functions</display-name>
+    <tlib-version>1.1</tlib-version>
+    <short-name>myjstl</short-name>
+    <uri>tld/MyCustomJstlTag.tld</uri>
+
+    <tag>
+        <name>profileImg</name>
+        <tag-class>com.gsvl.oneul.user.MyCustomJstlTag</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <name>idVal</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>classVal</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>iuser</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>imgIdVal</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>profileImgVal</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+</taglib>

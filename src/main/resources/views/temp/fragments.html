@@ -1,0 +1,102 @@
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<th:block th:fragment="header">
+    <span id="globalConst" sec:authorize="isAuthenticated()" th:with="auth=${#authentication.getPrincipal().getUser()}"
+          th:attr="data-iuser=${auth.iuser}, data-u_nm=${auth.u_nm}, data-u_profileimg=${auth.u_profileimg},
+    data-u_pfnum=${auth.u_pfnum}, data-u_id=${auth.u_id}, data-u_email=${auth.u_email}, data-u_nickname=${auth.u_nickname}, data-u_rdt=${auth.u_rdt}"></span>
+
+    <!--                    <div sec:authentication="principal.username"></div>-->
+    <div id='mask' class="loading-back"></div>
+    <div class="loading-box" id="loading_box">
+        <img class="loading-img" id='loadingImg' src='/img/loading.gif'/>
+<!--        <div class="loading-text">100번돌면 쓰러짐ㅋㅋ</div>-->
+    </div>
+
+    <header class="bg-pink hg-100">
+        <section class="header-logo ">
+            <div class="mr50">
+                <a href="/"><img class="sizeLogo" src="/img/logo_white.png"></a>
+            </div>
+            <div class="flex-c-r g30">
+                <div><a href="/food">오늘의 음식</a></div>
+                <div><a href="/jmt">오늘의 맛집</a></div>
+                <div><a href="/tv/1">TV 맛집</a></div>
+                <div><a href="/season">계절별 음식</a></div>
+                <div><a href="/alc">술 페어링</a></div>
+            </div>
+        </section>
+        <section class="header-user g50">
+            <form class="search-box" id="search_btn">
+                <button class="search-btn" ><i class="fas fa-search"></i></button>
+                <input type="text" name="jmt" placeholder="주소와 맛집이름을 검색해주세요! ex)서울 00">
+            </form>
+            <th:block sec:authorize="isAuthenticated()">
+                    <a class="flex-c-r" href="/user/logout">로그아웃</a>
+                    <a class="flex-c-r" href="/user/mypage">마이페이지</a>
+            </th:block>
+            <th:block sec:authorize="isAnonymous()">
+                    <a class="flex-c-r" href="/user/login">로그인</a>
+                    <a class="flex-c-r" href="/user/join">회원가입</a>
+            </th:block>
+        </section>
+    </header>
+</th:block>
+<th:block th:fragment="footer">
+    <footer>
+        <div class="copy-right">
+            <div><div class="line"><i class="fa-regular fa-copyright"></i></div></div>
+            <div class="copy-content-box">
+                <div class="flex-c-c g10">
+                    <span class="flex-c-r">오늘 뭐먹을지 고민하는 세상 모든사람을 위해</span>
+                </div>
+                <div class="flex-c-r">
+                    <span>presented by Team_GSVL</span>
+                </div>
+            </div>
+            <div class="flex-c-r">
+                <div class="notice_list_main text-emph ">공지사항</div>
+            </div>
+            <div class="copy-text">Copyright 2022. HandMade all rights reserved.</div>
+        </div>
+    </div>
+
+    <head>
+        <link rel="stylesheet"  th:href="@{/css/chatbot/chat.css}">
+        <script defer th:src="@{/js/chatbot/chat.js}"></script>
+    </head>
+
+    </footer>
+
+    <!-- chatbot -->
+    <div class="chat_container">
+        <div>
+            <button id="chat_btn" class="chat_btn"><i class="fa-regular fa-comments"></i></button>
+        </div>
+        <div id="chat_main" class="chat_main">
+            <div class="chat_text">
+                <div class="chat_close_box">
+                    <div>O_neul?</div>
+                    <span id="chat_main_close" class="chat_main_close">X</span>
+                </div>
+            </div>
+            <div class="robot">
+                <div id="chatbot_icon" class="chatbot_icon"><i class="fa-brands fa-github-alt"></i>
+                </div>
+                <h3 class="chatbot_nm">오늘</h3>
+            </div>
+
+            <!-- 메인 질문 -->
+            <div id="sentence" class="sentence">
+                <div class="welcome">안녕하세요. o_neul 입니다. 아래중 원하시는 기능을 선택해주세요.</div>
+                <div>
+                    <div id="food_jmt" class="food_jmt">맛집</div>
+                    <div id="chat_menu" class="chat_menu">메뉴</div>
+                    <div id="chat_customer" class="chat_customer">고객문의</div>
+                </div>
+                <div id="question" class="question"></div>
+            </div>
+        </div>
+    </div>
+</th:block>
+</html>

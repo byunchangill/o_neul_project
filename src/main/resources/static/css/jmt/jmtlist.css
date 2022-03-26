@@ -1,0 +1,119 @@
+.jmt-content-container{
+    width: 100%;
+    height: 100%;
+    padding: 50px 100px;
+}
+
+.jmt-addr{
+    background-color: #555555;
+}
+
+.jmt-map-pick-container{
+    /*display: grid;*/
+    /*grid-template-columns: repeat(3,auto);*/
+    display: flex;
+    flex-direction: row;
+    gap: 150px;
+    align-items: center;
+    justify-content: center;
+}
+.jmt-map-box{
+    align-items: center;
+    justify-items: center;
+    width: 600px;
+    height: 700px;
+    display: grid;
+    grid-template-rows: 50px 1fr;
+}
+
+.jmt-btw-box{
+    width: 200px;
+}
+
+.jmt-pick-box{
+    background-image: url("/img/test1.png");
+    background-repeat: no-repeat;
+    background-size: 90%;
+    background-position: 54% center;
+
+
+
+    align-items: center;
+    justify-items: center;
+    width: 600px;
+    height: 700px;
+    display: grid;
+    grid-template-rows: 50px 1fr;
+}
+
+.jmt-pick-item{
+    padding: 70px 50px;
+}
+
+.jmt-pick-box img{
+    background-color: rgba(52, 52, 52, 0.32);
+    width: 400px;
+    height: 310px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.jmt-list-box{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    justify-items: center;
+    align-items: center;
+    gap: 50px;
+}
+.jmt-list-item{
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+.jmt-item-click{
+    background-image: url("/img/rp2.png");
+    background-repeat: no-repeat;
+    background-size: 70%;
+    background-position: 129px 151px;
+}
+
+.jmt-item-star i{
+    color: yellow;
+}
+
+.jmt-list-item img{
+    cursor: pointer;
+    width: 250px;
+    height: 170px;
+    border-radius: 15px;
+}
+.jmt-item-span1{
+    margin-top: 5px;
+    /*font-weight: normal !important;*/
+    color: rgb(112, 112, 112);
+    font-size: 15px;
+    display: flex;
+    gap: 10px;
+}
+.jmt-item-span2{
+    font-size: 18px;
+}
+.jmt-page-box{
+    width: 250px;
+    height: 50px;
+    background-color: rgba(241, 200, 200, 0.89);
+    border-radius: 5px;
+
+}
+.jmt-page-box div{
+    cursor: pointer;
+    padding: 5px 15px;
+    color: #ffffff;
+}
+.page-clicked{
+    background-color: #ffffff;
+    color: rgba(0, 0, 0, 0.44) !important;
+    border-radius: 50px;
+}

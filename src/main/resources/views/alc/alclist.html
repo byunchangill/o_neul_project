@@ -1,0 +1,60 @@
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="temp/thymeleaf_layout">
+<head>
+    <link rel="stylesheet" th:href="@{/css/alc/alc.css}">
+    <script defer th:src="@{/js/alc/alc.js}"></script>
+    <meta charset="UTF-8">
+    <title>Alc</title>
+</head>
+    <th:block layout:fragment="content">
+        <section class="alc-bn-container">
+            <div class="flex-c-c">
+                <img src="/img/alc_bn.png"> <!--술페어링 배너 이미지-->
+            </div>
+        </section>
+
+        <section class="alc-content-container">
+            <div> <!--술 종류별 아이콘 띄우기-->
+                <div class="line" id="alcohol_icon">
+                    <i class="fa-solid fa-wine-bottle"></i>
+                </div>
+            </div>
+
+            <div class="flex-c-r mt100">
+                <div class="alcohol-menu-pickitem">
+                    <div class="alcohol-menu"> <!--계절 이름 띄우기-->
+                        <div class="alcohol-menu-box ">
+                            <span th:each="item : ${alknm}" class="alcohol_title">
+                                <div class="alcohol_nm" th:text="${item.keyNm}"></div>
+                                <input type="hidden" class="alcohol_num" th:value="${item.keyValue}">
+                            </span>
+                        </div>
+                        <div class="flex-c-r">
+                            <div class="alcohol_text mt20 flex-c-c g10" id="alcohol_text"></div>
+                        </div>
+                    </div>
+                    <div class="alcohol-item flex-c-c">
+                        <div class="alcohol-item-show flex-c-c mt20" id="alcohol_item_show">
+                            <img src="/img/rp2.png">
+                        </div>
+                        <div class="alcohol-btn-box flex-c-r g100">
+                            <div id="imgStart">START</div>
+                            <div id="imgStop">STOP</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt100">
+                <div class="flex-c-c">
+                    <div class="flex-c-c"><!--술 종류에 맞는 메뉴 띄우기-->
+                        <div id="alcohol_list_img" class="alcohol_list_img"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </th:block>
+</html>
+

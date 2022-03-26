@@ -1,0 +1,328 @@
+/*메인*/
+.main-container{
+    display: flex;
+    flex-direction: column;
+    gap: 150px;
+    margin-top: 100px;
+    padding: 0 100px;
+}
+/*배너*/
+.bn-container {
+
+}
+.bn .swiper-slide {
+    text-align:center;
+    display:flex; /* 내용을 중앙정렬 하기위해 flex 사용 */
+    align-items:center; /* 위아래 기준 중앙정렬 */
+    justify-content:center; /* 좌우 기준 중앙정렬 */
+}
+
+/*.bn-button-next {*/
+/*    background: url("/res/img/con_go.png") no-repeat;*/
+/*    background-size: 170%;*/
+/*    background-position: center;*/
+/*}*/
+
+/*.bn-button-prev {*/
+/*    background: url("/res/img/con_back.png") no-repeat;*/
+/*    background-size: 170%;*/
+/*    background-position: center;*/
+/*}*/
+.bn .swiper-slide img{
+    max-width:100%;
+    height: 330px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.bn .swiper-pagination{
+    bottom: auto;
+}
+.bn .swiper-button-prev{
+    background: url("/img/con_back.png") no-repeat;
+    background-size: 100%;
+    top:auto;
+}
+.bn .swiper-button-next{
+    background: url("/img/con_go.png") no-repeat;
+    background-size: 100%;
+    top:auto;
+}
+
+.bn .swiper-button-next::after,
+.bn .swiper-button-prev::after {
+    display: none;
+}
+.bn .swiper-pagination-clickable .swiper-pagination-bullet{
+    background-color: #ff4e7f;
+}
+
+/*배너끝*/
+
+
+/*
+음식추천
+*/
+.foodrd{
+
+}
+.rdfood-main{
+
+}
+.rdfood-list{
+    display: grid;
+    height: 500px;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: repeat(2,auto);
+    column-gap: 40px;
+    row-gap: 80px;
+    place-items:center;
+    margin: 0;
+    padding: 0;
+}
+
+.rdfood-list img{
+    width: 380px;
+    height: 220px;
+    border-radius: 15px;
+    margin-bottom: 10px;
+}
+
+.rdfood-spanCon{
+    color: #fa6e6e;
+}
+
+.bg{ /*투명배경*/
+    background-color:rgba(0, 0, 0, 0.5);
+    width:100%;
+    height: 100%;
+    position: absolute;
+}
+
+.main-btn-box{
+    padding: 10px 0;
+    width: 200px;
+    background-color: #ff4e7f;
+    color: white;
+    border: 2px solid #ff4e7f;
+    border-radius: 30px;
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+}
+.main-btn-box i{
+    margin-bottom: 5px;
+}
+
+#foodRe{
+    transition: all ease 1s;
+}
+.main-btn-box span{
+    font-weight: bolder;
+}
+
+.rdfood-info{
+    font-weight: bolder;
+}
+.divBoxElem{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.divConElem{
+    display: flex;
+    flex-direction: column;
+}
+.zzim{
+    cursor: pointer;
+    margin-top: 15px;
+    margin-right: 15px;
+    font-size: 30px;
+    color: #ff4e7f;
+}
+
+
+/*
+맛집추천
+*/
+.rdfood-main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.gridlist-box{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rcrest-list{
+    display: grid;
+    grid-template-columns: repeat(4,auto);
+    grid-template-rows: repeat(2,auto);
+    place-items:center;
+    column-gap: 40px;
+    row-gap: 80px;
+    margin: 0;
+    padding: 0;
+}
+.rcrest-img{
+    cursor: pointer;
+    width: 380px;
+    height: 220px;
+    border-radius: 15px;
+    margin-bottom: 10px;
+}
+.rcrest-span-nm{
+    font-size: 19px;
+    font-weight: bolder;
+    margin-bottom: 5px;
+}
+
+.rcrest-span-fd{
+    padding: 0 10px;
+    background-color: #555555;
+    color: #ecf0f1;
+    font-size: 14px;
+    font-weight: bolder;
+}
+.jmtGo{
+    transition: all ease 1s;
+}
+
+
+.jmt-btn-box{
+    cursor: pointer;
+    padding: 10px 30px;
+    width: 200px;
+    color: white;
+    background-color: #ff4e7f;
+    border-radius: 50px;
+    margin-top: 100px;
+    display: flex;
+    font-weight: bolder;
+    justify-content: space-between;
+    align-items: center;
+}
+/*
+방송별 css
+*/
+.broad .swiper-container {
+    width: 1500px;
+    height:300px;
+    /*box-shadow:0 0 10px #fa6e6e inset;*/
+}
+.broad .swiper-slide {
+    text-align:center;
+    display:flex; /* 내용을 중앙정렬 하기위해 flex 사용 */
+    align-items:center; /* 위아래 기준 중앙정렬 */
+    justify-content:center; /* 좌우 기준 중앙정렬 */
+}
+.broad .swiper-slide img {
+    max-width:100%; /* 이미지 최대너비를 제한, 슬라이드에 이미지가 여러개가 보여질때 필요 */
+}
+.broad .broad-tasty{
+    width: 320px;
+    height: 200px;
+}
+.broad .broad-yjroad{
+    width: 255px;
+    height: 255px;
+}
+
+.broad .swiper-button-next {
+    background: url("/img/con_go.png") no-repeat;
+    background-size: 170%;
+    background-position: center;
+}
+
+.broad .swiper-button-prev {
+    background: url("/img/con_back.png") no-repeat;
+    background-size: 170%;
+    background-position: center;
+}
+
+.broad .swiper-button-next::after,
+.broad .swiper-button-prev::after {
+    display: none;
+}
+/*
+계절,술 추천
+*/
+.sa-title-list{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 100px;
+}
+
+.sa-list fieldset{
+    height: 70px;
+    background-color: #ff4e7f;
+    padding: 20px 30px;
+    border-radius: 50px;
+}
+.sa-list fieldset label{
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px 0;
+    width: 60px;
+    height: 50px;
+    border-radius: 40px;
+}
+
+.sa-list .a-chk{
+    background-color: white;
+    color: black;
+}
+.sa-list{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+.sa-list img{
+    width: 300px;
+    height: 200px;
+    border-radius: 20px;
+}
+.s-text{
+    padding: 20px 30px;
+    gap: 30px;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #ff4e7f;
+    border-radius: 50px;
+}
+.ss-list ,.ac-list{
+    display: grid;
+    justify-items: center;
+    gap: 40px;
+    width: 700px;
+    height: 600px;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: repeat(2,1fr);
+}
+.sa-list .jmt-btn-box{
+    padding: 10px 30px;
+    width: 200px;
+    color: white;
+    background-color: #ff4e7f;
+    border-radius: 50px;
+    margin-top: 100px;
+    display: flex;
+    font-weight: bolder;
+    justify-content: space-between;
+    align-items: center;
+}
+

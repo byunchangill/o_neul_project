@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <link rel="stylesheet" th:href="@{/css/user/login.css}">
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <script defer th:src="@{/js/user/login.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/video.css}">
+    <script defer th:src="@{/js/video.js}"></script>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<section class="login-container flex-c-c">
+    <div class="video-login-container ">
+        <div>
+            <div class="line"><a href="/"><img class="login-logo" src="/img/logo.png"></a></div>
+        </div>
+        <div class="flex-c-c mt60">
+<!--            <div class="login-text-emph f-s-40 mt40 mb50">LOGIN</div>-->
+            <div class="text-emph mb20"  th:text="${error}"></div>
+            <form class="login-form" id="loginBtn" action="/user/login" method="post">
+
+
+                <div><input type="text" name="u_id" placeholder="아이디"></div>
+                <div><input type="password" name="u_pw" placeholder="비밀번호"></div>
+
+
+                <div><input type="submit" class="login-btn" value="로그인"></div>
+            </form>
+            <div>
+                <a href="/user/idfind"><input type="button" class="login-btn" value="아이디 찾기"></a>
+                <a href="/user/pwfind"><input type="button" class="login-btn" value="비밀번호 찾기"></a>
+            </div>
+        </div>
+        <div class="mt40">
+            <div class="f-s-20 line">+</div>
+        </div>
+        <div class="flex-c-c">
+            <div class="f-s-20">간편 로그인</div>
+            <div class="login-another">
+                <a th:href="@{/oauth2/authorization/naver}"><img src="/img/naverlogo.png"></a>
+                <a th:href="@{/oauth2/authorization/kakao}"><img src="/img/kakaologo.png"></a>
+                <a th:href="@{/oauth2/authorization/google}"><img src="/img/googlelogo.png"></a>
+            </div>
+            <div class="flex-c-r g50 mt40">
+                <div>아직 오늘 회원이 아니세요?</div>
+                <a href="/user/join"><button class="login-btn">회원가입</button></a>
+            </div>
+        </div>
+    </div>
+
+</section>
+<video class="back_video" autoplay muted loop>
+    <source src="/video/backvideo.mp4" type="video/mp4">
+</video>
+</body>
+</html>
